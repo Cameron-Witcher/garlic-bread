@@ -6,8 +6,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.gugbmc.garlic.utils.CustomItem;
 import com.gugbmc.garlic.utils.Utils;
+import com.gugbmc.garlic.utils.items.CustomItem;
 
 public class AdminCommands implements CommandExecutor {
 

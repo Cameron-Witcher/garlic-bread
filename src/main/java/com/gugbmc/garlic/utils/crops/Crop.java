@@ -10,8 +10,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 
-import com.gugbmc.garlic.utils.CustomItem;
 import com.gugbmc.garlic.utils.Utils;
+import com.gugbmc.garlic.utils.items.CustomItem;
 
 public class Crop {
 

@@ -7,8 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import com.gugbmc.garlic.utils.CustomItem;
-
 public class ItemIdentifier {
 
 	private static Map<ItemStack, Character> leg = new HashMap<>();

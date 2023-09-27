@@ -1,8 +1,10 @@
-package com.gugbmc.garlic.utils;
+package com.gugbmc.garlic.utils.items;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import com.gugbmc.garlic.utils.Utils;
 
 public enum CustomItem {
 

@@ -7,8 +7,8 @@ import java.util.Map.Entry;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import com.gugbmc.garlic.utils.CustomItem;
 import com.gugbmc.garlic.utils.Utils;
+import com.gugbmc.garlic.utils.items.CustomItem;
 
 public class Crops {
 

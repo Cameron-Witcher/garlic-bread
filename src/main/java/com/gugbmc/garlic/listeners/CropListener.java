@@ -15,9 +15,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
-import com.gugbmc.garlic.utils.CustomItem;
 import com.gugbmc.garlic.utils.crops.Crop;
 import com.gugbmc.garlic.utils.crops.Crops;
+import com.gugbmc.garlic.utils.items.CustomItem;
 
 public class CropListener implements Listener {
 
