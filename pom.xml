@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gugbmc</groupId>
-	<artifactId>${project.basedir}</artifactId>
+	<artifactId>garlic-bread</artifactId>
 	<version>0.5</version>
-	<name>${project.basedir}</name>
+	<name>${project.artifactId}</name>
 	<properties>
 		<deps>/home/Minecraft/Dependencies</deps>
 		<maven.compiler.target>17</maven.compiler.target>
