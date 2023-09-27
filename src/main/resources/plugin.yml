@@ -2,7 +2,7 @@ name: garlic-bread
 author: QuickScythe
 version: ALPHA
 description: This plugin adds Garlic bread to the game!
-api-version: 1.20
+api-version: 1.2
 api: Spigot
 main: com.gugbmc.garlic.GarlicPlugin
 commands:
@@ -12,3 +12,5 @@ commands:
       usage: /item
       aliases:
       - i
+   debug:
+      usage: /debug
