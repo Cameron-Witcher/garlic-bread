@@ -60,8 +60,8 @@ public class Crop {
 			}
 			Utils.log("amount: " + amount);
 
-			stand.teleport(stand.getLocation().clone().add(0, amount * 0.1625, 0));
-			loc.getWorld().spawnParticle(Particle.COMPOSTER, getLocation().add(0.5, 0.5, 0.5), 10, 0.1, 0.1, 0.1, 0);
+			stand.teleport(stand.getLocation().clone().add(0, amount * 0.135, 0));
+			loc.getWorld().spawnParticle(Particle.COMPOSTER, getLocation().add(0.5, 0.5, 0.5), 10, 0.3, 0.3, 0.3, 0);
 			return true;
 		}
 		return false;
