@@ -6,7 +6,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public enum CustomItem {
 
-	GARLIC(Material.CARROT, 1), GARLIC_BREAD(Material.BREAD, 1);
+	GARLIC(Material.CARROT, 50), GARLIC_BREAD(Material.BREAD, 1);
 
 	int cmd;
 	Material mat;
