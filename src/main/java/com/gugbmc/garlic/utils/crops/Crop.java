@@ -28,9 +28,6 @@ public class Crop {
 		stand = loc.getWorld().spawn(loc.clone().add(0.5, -100, 0.5), ArmorStand.class);
 		stand.setInvisible(true);
 		stand.setGravity(false);
-		stand.setCustomName(ci.getName());
-		stand.setCustomNameVisible(true);
-
 		ItemStack model = new ItemStack(Material.CARVED_PUMPKIN);
 		ItemMeta mm = model.getItemMeta();
 		mm.setCustomModelData(ci.getModelData());

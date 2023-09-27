@@ -31,14 +31,10 @@ public class CropListener implements Listener {
 
 	@EventHandler
 	public void onArmorStandHit(EntityDamageByEntityEvent e) {
-		if (e.getEntity() instanceof ArmorStand && e.getDamager() instanceof Player) {
-			Bukkit.broadcastMessage("1");
-			if (e.getEntity().hasMetadata("crop")) {
-				Bukkit.broadcastMessage("2");
-				Crop crop = (Crop) e.getEntity().getMetadata("crop").get(0).value();
-				crop.harvest();
-			}
-		}
+		if (e.getEntity() instanceof ArmorStand && e.getDamager() instanceof Player)
+			if (e.getEntity().hasMetadata("crop"))
+				((Crop) e.getEntity().getMetadata("crop").get(0).value()).harvest();
+
 	}
 
 	@EventHandler
