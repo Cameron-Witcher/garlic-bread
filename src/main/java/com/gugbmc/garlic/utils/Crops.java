@@ -21,4 +21,8 @@ public class Crops {
 		return crops.get(loc);
 	}
 
+	public static void removeCrop(Location loc) {
+		crops.remove(loc);
+	}
+
 }

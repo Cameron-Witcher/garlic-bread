@@ -3,6 +3,7 @@ package com.gugbmc.garlic.listeners;
 import java.util.Random;
 
 import org.bukkit.Material;
+import org.bukkit.block.data.Ageable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -37,8 +38,14 @@ public class CropListener implements Listener {
 			e.setCancelled(true);
 			e.getBlock().setType(Material.AIR);
 			// TODO Check to make sure the item being broken is fully grown...
-			for (int i = 0; i <= new Random().nextInt(3) + 2; i++)
+			Ageable ageable = (Ageable) e.getBlock().getBlockData();
+			if (ageable.getAge() >= ageable.getMaximumAge())
+				for (int i = 0; i <= new Random().nextInt(2) + 2; i++)
+					e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), ci.getItem());
+			else
 				e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), ci.getItem());
+			
+			Crops.removeCrop(e.getBlock().getLocation());
 		}
 	}
 
