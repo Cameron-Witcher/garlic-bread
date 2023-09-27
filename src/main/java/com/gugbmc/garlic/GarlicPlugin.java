@@ -12,10 +12,14 @@ public class GarlicPlugin extends JavaPlugin implements Listener {
 	public void onEnable() {
 
 		Utils.init(this);
-		
+
 		new AdminCommands(this, "update", "item", "debug");
 		new CropListener(this);
 
+	}
+
+	public void onDisable() {
+		Utils.end();
 	}
 
 }
