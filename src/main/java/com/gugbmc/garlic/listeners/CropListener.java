@@ -36,7 +36,7 @@ public class CropListener implements Listener {
 		if (Crops.isCrop(e.getBlock().getLocation())) {
 			CustomItem ci = Crops.getCrop(e.getBlock().getLocation());
 			e.setCancelled(true);
-			e.getBlock().setType(Material.AIR);
+
 			// TODO Check to make sure the item being broken is fully grown...
 			Ageable ageable = (Ageable) e.getBlock().getState().getBlockData();
 			if (ageable.getAge() >= ageable.getMaximumAge())
@@ -44,7 +44,7 @@ public class CropListener implements Listener {
 					e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), ci.getItem());
 			else
 				e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), ci.getItem());
-
+			e.getBlock().setType(Material.AIR);
 			Crops.removeCrop(e.getBlock().getLocation());
 		}
 	}
