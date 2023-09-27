@@ -8,7 +8,7 @@
 			<arg value="-1" />
 			<arg value="--pretty=%B" />
 		</exec>
-		<condition property="git.install" value="true" else="true">
+		<condition property="git.install" value="true" else="false">
 			<and>
 				<contains string="${git.message}" substring="#release" />
 			</and>
