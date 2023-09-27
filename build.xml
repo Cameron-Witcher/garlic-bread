@@ -8,9 +8,9 @@
 			<arg value="-1" />
 			<arg value="--pretty=%B" />
 		</exec>
-		<condition property="git.install" value="true" else="false">
+		<condition property="git.install" value="false" else="true">
 			<and>
-				<contains string="${git.message}" substring="#release" />
+				<contains string="${git.message}" substring="#test" />
 			</and>
 		</condition>
 		<echo message="Preparing compilation." />
