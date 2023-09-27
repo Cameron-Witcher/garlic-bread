@@ -61,7 +61,7 @@ public class Crop {
 				age = max_age;
 			}
 			stand.teleport(stand.getLocation().clone().add(0, amount * 0.135, 0));
-			loc.getWorld().spawnParticle(Particle.COMPOSTER, getLocation().add(0.5, 0.5, 0.5), 10, 0.3, 0.3, 0.3, 0);
+			loc.getWorld().spawnParticle(Particle.COMPOSTER, getLocation().add(0.5, 0.5, 0.5), 10, 0.25, 0.25, 0.25, 0);
 			return true;
 		}
 		return false;
