@@ -30,7 +30,7 @@ public class Crop {
 		mm.setCustomModelData(ci.getModelData());
 		model.setItemMeta(mm);
 		stand.getEquipment().setHelmet(model);
-		stand.teleport(stand.getLocation().clone().add(0, 98.1, 0));
+		stand.teleport(stand.getLocation().clone().add(0, 97.5, 0));
 	}
 
 	public CustomItem getCustomItem() {
@@ -47,6 +47,7 @@ public class Crop {
 
 	public void ageUp(int amount) {
 		age = age + amount;
+		stand.teleport(stand.getLocation().clone().add(0,amount*0.325,0));
 	}
 
 	public int getAge() {

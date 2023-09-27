@@ -37,7 +37,7 @@ public class CropListener implements Listener {
 					Crop crop = Crops.getCrop(e.getClickedBlock().getLocation());
 					crop.ageUp(new Random().nextInt(1) + 1);
 					e.getClickedBlock().getWorld().spawnParticle(Particle.COMPOSTER,
-							crop.getLocation().add(0.5, 0.5, 0.5), 10, 1, 1, 1, 0);
+							crop.getLocation().add(0.5, 0.5, 0.5), 10, 0.5, 0.5, 0.5, 0);
 				}
 				return;
 			}
