@@ -36,4 +36,8 @@ public enum CustomItem {
 		return Utils.colorize(name);
 	}
 
+	public Integer getModelData() {
+		return cmd;
+	}
+
 }

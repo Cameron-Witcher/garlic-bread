@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import com.gugbmc.garlic.utils.CustomItem;
@@ -25,9 +26,13 @@ public class CropListener implements Listener {
 
 	@EventHandler
 	public void onCropPlant(PlayerInteractEvent e) {
-		if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)
-				&& e.getPlayer().getInventory().getItemInMainHand().isSimilar(CustomItem.GARLIC.getItem())) {
-			Crops.addCrop(e.getClickedBlock().getLocation().clone().add(0, 1, 0), CustomItem.GARLIC);
+		if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+			ItemStack hand = e.getPlayer().getInventory().getItemInMainHand();
+			for (CustomItem ci : CustomItem.values()) {
+				if (!ci.getItem().isSimilar(hand))
+					continue;
+				Crops.addCrop(e.getClickedBlock().getLocation().clone().add(0, 1, 0), ci);
+			}
 		}
 	}
 
