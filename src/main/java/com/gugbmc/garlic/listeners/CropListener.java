@@ -2,7 +2,6 @@ package com.gugbmc.garlic.listeners;
 
 import java.util.Random;
 
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;

@@ -37,6 +37,10 @@ public class Crop {
 		stand.setMetadata("crop", new FixedMetadataValue(Utils.getPlugin(), this));
 	}
 
+	public void setAge(int age) {
+		this.age = age;
+	}
+
 	public CustomItem getCustomItem() {
 		return ci;
 	}
