@@ -62,6 +62,7 @@ public class Utils {
 	}
 
 	public static boolean downloadFile(String url, String filename, String... auth) {
+		log("Starting download of latest file");
 
 		boolean success = true;
 		InputStream in = null;
@@ -71,6 +72,7 @@ public class Utils {
 
 			URL myUrl = new URL(url);
 			HttpURLConnection conn = (HttpURLConnection) myUrl.openConnection();
+			log("Connected.");
 			conn.setDoOutput(true);
 			conn.setReadTimeout(30000);
 			conn.setConnectTimeout(30000);
@@ -85,10 +87,12 @@ public class Utils {
 				String basicAuth = "Basic " + new String(Base64.getEncoder().encode(userCredentials.getBytes()));
 				conn.setRequestProperty("Authorization", basicAuth);
 			}
+			log("Authorization passed.");
 			in = conn.getInputStream();
 			out = new FileOutputStream(filename);
 			int c;
 			byte[] b = new byte[1024];
+			log("Downloading...");
 			while ((c = in.read(b)) != -1)
 				out.write(b, 0, c);
 
@@ -116,6 +120,7 @@ public class Utils {
 					e.printStackTrace();
 				}
 		}
+		log("Finished downloading update. You may reload now for changes to take effect, however you should restart at your next convenience.");
 		return success;
 	}
 

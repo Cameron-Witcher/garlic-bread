@@ -14,12 +14,13 @@ public class Crop {
 	public Crop(Location loc, CustomItem ci) {
 		this.loc = loc;
 		this.ci = ci;
-		stand = loc.getWorld().spawn(loc.clone().add(0.5, 0, 0.5), ArmorStand.class);
+		stand = loc.getWorld().spawn(loc.clone().add(0.5, -100, 0.5), ArmorStand.class);
 		stand.setInvisible(true);
 		stand.setGravity(false);
 		stand.setCustomName(ci.getName());
 		stand.setCustomNameVisible(true);
 		stand.setSmall(true);
+		stand.teleport(stand.getLocation().clone().add(0, 99.1, 0));
 	}
 
 	public CustomItem getCustomItem() {
