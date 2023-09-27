@@ -34,7 +34,7 @@ public class CraftingListener implements Listener {
 				@Override
 				public void run() {
 					String r = "";
-					for (int i = 0; i != 9; i++) {
+					for (int i = 1; i != 9; i++) {
 						r = r + ItemIdentifier.getId(c.getItem(i) == null ? new ItemStack(Material.AIR) : c.getItem(i));
 					}
 					Bukkit.broadcastMessage(r);
