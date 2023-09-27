@@ -1,11 +1,14 @@
 package com.gugbmc.garlic.utils.crops;
 
+import java.util.Random;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.metadata.FixedMetadataValue;
 
 import com.gugbmc.garlic.utils.CustomItem;
 import com.gugbmc.garlic.utils.Utils;
@@ -16,6 +19,7 @@ public class Crop {
 	ArmorStand stand;
 	Location loc;
 	int age = 0;
+	int max_age = 4;
 
 	public Crop(Location loc, CustomItem ci) {
 		this.loc = loc;
@@ -33,6 +37,7 @@ public class Crop {
 		model.setItemMeta(mm);
 		stand.getEquipment().setHelmet(model);
 		stand.teleport(stand.getLocation().clone().add(0, 97.5, 0));
+		stand.setMetadata("crop", new FixedMetadataValue(Utils.getPlugin(), this));
 	}
 
 	public CustomItem getCustomItem() {
@@ -48,18 +53,12 @@ public class Crop {
 	}
 
 	public boolean ageUp(int amount) {
-		if (age < getMaxAge()) {
-			Utils.log("amount: " + amount);
-			Utils.log("age: " + age);
-
+		if (age < max_age) {
 			age = age + amount;
-			Utils.log("age: " + age);
-			if (age > getMaxAge()) {
-				amount = amount - (age - getMaxAge());
-				age = getMaxAge();
+			if (age > max_age) {
+				amount = amount - (age - max_age);
+				age = max_age;
 			}
-			Utils.log("amount: " + amount);
-
 			stand.teleport(stand.getLocation().clone().add(0, amount * 0.135, 0));
 			loc.getWorld().spawnParticle(Particle.COMPOSTER, getLocation().add(0.5, 0.5, 0.5), 10, 0.3, 0.3, 0.3, 0);
 			return true;
@@ -77,6 +76,12 @@ public class Crop {
 
 	public Location getLocation() {
 		return loc.clone();
+	}
+
+	public void harvest() {
+		loc.getWorld().dropItemNaturally(loc, ci.getItem((age >= max_age ? new Random().nextInt(2) + 2 : 1)));
+		loc.getBlock().setType(Material.AIR);
+		Crops.removeCrop(loc);
 	}
 
 }

@@ -2,12 +2,16 @@ package com.gugbmc.garlic.listeners;
 
 import java.util.Random;
 
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
@@ -23,6 +27,18 @@ public class CropListener implements Listener {
 	public CropListener(Plugin plugin) {
 		this.plugin = plugin;
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
+	}
+
+	@EventHandler
+	public void onArmorStandHit(EntityDamageByEntityEvent e) {
+		if (e.getEntity() instanceof ArmorStand && e.getDamager() instanceof Player) {
+			Bukkit.broadcastMessage("1");
+			if (e.getEntity().hasMetadata("crop")) {
+				Bukkit.broadcastMessage("2");
+				Crop crop = (Crop) e.getEntity().getMetadata("crop").get(0).value();
+				crop.harvest();
+			}
+		}
 	}
 
 	@EventHandler
@@ -55,12 +71,8 @@ public class CropListener implements Listener {
 		if (Crops.isCrop(e.getBlock().getLocation())) {
 			e.setCancelled(true);
 			Crop crop = Crops.getCrop(e.getBlock().getLocation());
+			crop.harvest();
 
-			e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), crop.getCustomItem()
-					.getItem((crop.getAge() >= crop.getMaxAge() ? new Random().nextInt(2) + 2 : 1)));
-
-			e.getBlock().setType(Material.AIR);
-			Crops.removeCrop(e.getBlock().getLocation());
 		}
 	}
 
