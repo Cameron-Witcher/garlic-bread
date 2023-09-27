@@ -2,6 +2,7 @@ package com.gugbmc.garlic.utils.crops;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -45,9 +46,19 @@ public class Crop {
 		ageUp(1);
 	}
 
-	public void ageUp(int amount) {
-		age = age + amount;
-		stand.teleport(stand.getLocation().clone().add(0,amount*0.325,0));
+	public boolean ageUp(int amount) {
+		if (age < getMaxAge()) {
+			age = age + amount;
+			if (age > getMaxAge()) {
+				amount = amount - (age - getMaxAge());
+				age = getMaxAge();
+			}
+
+			stand.teleport(stand.getLocation().clone().add(0, amount * 0.325, 0));
+			loc.getWorld().spawnParticle(Particle.COMPOSTER, getLocation().add(0.5, 0.5, 0.5), 10, 0.1, 0.1, 0.1, 0);
+			return true;
+		}
+		return false;
 	}
 
 	public int getAge() {

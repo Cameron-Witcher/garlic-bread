@@ -2,9 +2,8 @@ package com.gugbmc.garlic.listeners;
 
 import java.util.Random;
 
+import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.block.data.Ageable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -35,9 +34,10 @@ public class CropListener implements Listener {
 			if (hand.getType().equals(Material.BONE_MEAL)) {
 				if (Crops.isCrop(e.getClickedBlock().getLocation())) {
 					Crop crop = Crops.getCrop(e.getClickedBlock().getLocation());
-					crop.ageUp(new Random().nextInt(1) + 1);
-					e.getClickedBlock().getWorld().spawnParticle(Particle.COMPOSTER,
-							crop.getLocation().add(0.5, 0.5, 0.5), 10, 0.5, 0.5, 0.5, 0);
+					if (crop.ageUp(new Random().nextInt(1) + 1)) {
+						if (!e.getPlayer().getGameMode().equals(GameMode.CREATIVE))
+							hand.setAmount(hand.getAmount() - 1);
+					}
 				}
 				return;
 			}
