@@ -37,6 +37,7 @@ public class CropListener implements Listener {
 			CustomItem ci = Crops.getCrop(e.getBlock().getLocation());
 			e.setCancelled(true);
 			
+			
 			// TODO Check to make sure the item being broken is fully grown...
 			Ageable ageable = (Ageable) e.getBlock().getState().getBlockData();
 			if (ageable.getAge() >= ageable.getMaximumAge())

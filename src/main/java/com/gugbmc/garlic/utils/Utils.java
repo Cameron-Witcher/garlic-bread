@@ -12,12 +12,19 @@ import java.util.UUID;
 import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
 
 import net.md_5.bungee.api.ChatColor;
 
 public class Utils {
 
+	private static Plugin plugin;
+
 	static List<UUID> debuggers = new ArrayList<>();
+
+	public static void init(Plugin main) {
+		plugin = main;
+	}
 
 	public static void toggleDebug(UUID uid) {
 		if (!debuggers.contains(uid))
@@ -109,6 +116,10 @@ public class Utils {
 				}
 		}
 		return success;
+	}
+
+	public static Plugin getPlugin() {
+		return plugin;
 	}
 
 }
