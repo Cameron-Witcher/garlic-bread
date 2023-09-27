@@ -11,23 +11,19 @@ public class Crops {
 	private static Map<Location, CustomItem> crops = new HashMap<>();
 
 	public static void addCrop(Location loc, CustomItem ci) {
-		loc.getBlock().setMetadata("crop", new FixedMetadataValue(Utils.getPlugin(), ci));
-//		crops.put(loc, ci);
+		crops.put(loc, ci);
 	}
 
 	public static boolean isCrop(Location loc) {
-		return loc.getBlock().hasMetadata("crop");
-//		return crops.containsKey(loc);
+		return crops.containsKey(loc);
 	}
 
 	public static CustomItem getCrop(Location loc) {
-		return (CustomItem) loc.getBlock().getMetadata("crop").get(0).value();
-//		return crops.get(loc);
+		return crops.get(loc);
 	}
 
 	public static void removeCrop(Location loc) {
-		loc.getBlock().removeMetadata("crop", Utils.getPlugin());
-//		crops.remove(loc);
+		crops.remove(loc);
 	}
 
 }

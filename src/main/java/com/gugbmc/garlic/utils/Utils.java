@@ -26,11 +26,12 @@ public class Utils {
 		plugin = main;
 	}
 
-	public static void toggleDebug(UUID uid) {
+	public static boolean toggleDebug(UUID uid) {
 		if (!debuggers.contains(uid))
 			debuggers.add(uid);
 		else
 			debuggers.remove(uid);
+		return debuggers.contains(uid);
 	}
 
 	public static void log(String message) {

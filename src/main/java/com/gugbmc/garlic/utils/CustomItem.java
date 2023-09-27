@@ -6,12 +6,14 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public enum CustomItem {
 
-	GARLIC(Material.CARROT, 50), GARLIC_BREAD(Material.BREAD, 1);
+	GARLIC("Garlic", Material.CARROT, 50), GARLIC_BREAD("Garlic Bread", Material.BREAD, 1);
 
+	String name;
 	int cmd;
 	Material mat;
 
-	CustomItem(Material mat, int cmd) {
+	CustomItem(String name, Material mat, int cmd) {
+		this.name = name;
 		this.mat = mat;
 		this.cmd = cmd;
 	}
@@ -24,8 +26,9 @@ public enum CustomItem {
 		ItemStack ci = new ItemStack(mat);
 		ItemMeta im = ci.getItemMeta();
 		im.setCustomModelData(cmd);
+		im.setDisplayName(name);
 		ci.setItemMeta(im);
-		ci.setAmount(1);
+		ci.setAmount(amount);
 		return ci;
 	}
 

@@ -24,9 +24,16 @@ public class AdminCommands implements CommandExecutor {
 			Utils.updatePlugin();
 		}
 		if (cmd.getName().equalsIgnoreCase("item")) {
-			if(sender instanceof Player) {
-				Player player = (Player)sender;
+			if (sender instanceof Player) {
+				Player player = (Player) sender;
 				player.getInventory().addItem(CustomItem.GARLIC.getItem());
+				player.updateInventory();
+			}
+		}
+		if (cmd.getName().equalsIgnoreCase("debug")) {
+			if (sender instanceof Player) {
+				sender.sendMessage(Utils.colorize(
+						"&7[&cgarlic-bread&7]&f Debug mode: " + Utils.toggleDebug(((Player) sender).getUniqueId())));
 			}
 		}
 		return true;
