@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.gugbmc.garlic.utils.CustomItem;
+import com.gugbmc.garlic.utils.Utils;
 
 public class Crop {
 
@@ -48,11 +49,16 @@ public class Crop {
 
 	public boolean ageUp(int amount) {
 		if (age < getMaxAge()) {
+			Utils.log("amount: " + amount);
+			Utils.log("age: " + age);
+
 			age = age + amount;
+			Utils.log("age: " + age);
 			if (age > getMaxAge()) {
 				amount = amount - (age - getMaxAge());
 				age = getMaxAge();
 			}
+			Utils.log("amount: " + amount);
 
 			stand.teleport(stand.getLocation().clone().add(0, amount * 0.325, 0));
 			loc.getWorld().spawnParticle(Particle.COMPOSTER, getLocation().add(0.5, 0.5, 0.5), 10, 0.1, 0.1, 0.1, 0);
