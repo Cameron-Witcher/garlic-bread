@@ -11,8 +11,8 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.Plugin;
 
-import com.gugbmc.garlic.utils.Crops;
 import com.gugbmc.garlic.utils.CustomItem;
+import com.gugbmc.garlic.utils.crops.Crops;
 
 public class CropListener implements Listener {
 
@@ -35,7 +35,7 @@ public class CropListener implements Listener {
 	public void onCropHarvest(BlockBreakEvent e) {
 		if (Crops.isCrop(e.getBlock().getLocation())) {
 			e.setCancelled(true);
-			CustomItem ci = Crops.getCrop(e.getBlock().getLocation());
+			CustomItem ci = Crops.getCrop(e.getBlock().getLocation()).getCustomItem();
 
 			Ageable ageable = (Ageable) e.getBlock().getState().getBlockData();
 			e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(),

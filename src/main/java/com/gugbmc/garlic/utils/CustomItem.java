@@ -32,4 +32,8 @@ public enum CustomItem {
 		return ci;
 	}
 
+	String getName() {
+		return name;
+	}
+
 }
