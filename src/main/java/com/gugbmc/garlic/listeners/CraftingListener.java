@@ -1,11 +1,13 @@
 package com.gugbmc.garlic.listeners;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.CraftingInventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import com.gugbmc.garlic.utils.Utils;
@@ -33,7 +35,7 @@ public class CraftingListener implements Listener {
 				public void run() {
 					String r = "";
 					for (int i = 0; i != 8; i++) {
-						r = r + ItemIdentifier.getId(c.getItem(i));
+						r = r + ItemIdentifier.getId(c.getItem(i) == null ? new ItemStack(Material.AIR) : c.getItem(i));
 					}
 					Bukkit.broadcastMessage(r);
 				}
