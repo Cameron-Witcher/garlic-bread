@@ -39,13 +39,15 @@ public class Crops {
 
 	public static void loadCrops() {
 		FileConfiguration fc = Utils.getPlugin().getConfig();
-		if (!(fc == null))
+		try {
 			for (String locstr : fc.getConfigurationSection("crops").getKeys(false)) {
 				Location loc = Utils.decryptLocation(locstr);
 				Crop crop = new Crop(loc, CustomItem.valueOf(fc.getString("crops." + locstr + ".custom_item")));
 				crop.setAge(fc.getInt("crops." + locstr + ".age"));
 				crops.put(loc, crop);
 			}
+		} catch (NullPointerException ex) {
+		}
 	}
 
 	public static void saveCrops() {
