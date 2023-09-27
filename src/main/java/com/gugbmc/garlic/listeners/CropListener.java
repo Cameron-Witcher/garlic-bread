@@ -53,12 +53,12 @@ public class CropListener implements Listener {
 				}
 				return;
 			}
-
-			for (CustomItem ci : CustomItem.values()) {
-				if (!ci.getItem().isSimilar(hand))
-					continue;
-				Crops.addCrop(e.getClickedBlock().getLocation().clone().add(0, 1, 0), ci);
-			}
+			if (e.getClickedBlock().getType().equals(Material.FARMLAND))
+				for (CustomItem ci : CustomItem.values()) {
+					if (!ci.getItem().isSimilar(hand))
+						continue;
+					Crops.addCrop(e.getClickedBlock().getLocation().clone().add(0, 1, 0), ci);
+				}
 		}
 	}
 
