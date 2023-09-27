@@ -13,7 +13,7 @@ public class GarlicPlugin extends JavaPlugin implements Listener {
 
 		Utils.init(this);
 		
-		new AdminCommands(this, "update");
+		new AdminCommands(this, "update", "item");
 		new CropListener(this);
 
 	}
