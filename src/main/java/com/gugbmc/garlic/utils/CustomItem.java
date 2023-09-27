@@ -32,8 +32,8 @@ public enum CustomItem {
 		return ci;
 	}
 
-	String getName() {
-		return name;
+	public String getName() {
+		return Utils.colorize(name);
 	}
 
 }

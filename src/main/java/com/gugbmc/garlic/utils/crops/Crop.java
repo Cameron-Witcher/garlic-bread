@@ -4,7 +4,6 @@ import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 
 import com.gugbmc.garlic.utils.CustomItem;
-import com.gugbmc.garlic.utils.Utils;
 
 public class Crop {
 
@@ -15,10 +14,10 @@ public class Crop {
 	public Crop(Location loc, CustomItem ci) {
 		this.loc = loc;
 		this.ci = ci;
-		stand = loc.getWorld().spawn(loc, ArmorStand.class);
+		stand = loc.getWorld().spawn(loc.clone().add(0.5, 0, 0.5), ArmorStand.class);
 		stand.setInvisible(true);
 		stand.setGravity(false);
-		stand.setCustomName(Utils.colorize(ci.name()));
+		stand.setCustomName(ci.getName());
 		stand.setCustomNameVisible(true);
 		stand.setSmall(true);
 	}
