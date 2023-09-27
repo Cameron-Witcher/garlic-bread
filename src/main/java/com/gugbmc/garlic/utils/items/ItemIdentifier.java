@@ -24,7 +24,6 @@ public class ItemIdentifier {
 	}
 
 	public static char getId(ItemStack i) {
-		Bukkit.broadcastMessage(i.getItemMeta().getDisplayName());
 		return leg.containsKey(i) ? leg.get(i) : null;
 	}
 
