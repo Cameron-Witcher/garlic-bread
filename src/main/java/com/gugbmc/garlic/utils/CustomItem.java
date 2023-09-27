@@ -26,7 +26,7 @@ public enum CustomItem {
 		ItemStack ci = new ItemStack(mat);
 		ItemMeta im = ci.getItemMeta();
 		im.setCustomModelData(cmd);
-		im.setDisplayName(name);
+		im.setDisplayName(Utils.colorize("&r" + name));
 		ci.setItemMeta(im);
 		ci.setAmount(amount);
 		return ci;

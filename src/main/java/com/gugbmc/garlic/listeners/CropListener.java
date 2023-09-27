@@ -34,10 +34,9 @@ public class CropListener implements Listener {
 	@EventHandler
 	public void onCropHarvest(BlockBreakEvent e) {
 		if (Crops.isCrop(e.getBlock().getLocation())) {
-			CustomItem ci = Crops.getCrop(e.getBlock().getLocation());
 			e.setCancelled(true);
+			CustomItem ci = Crops.getCrop(e.getBlock().getLocation());
 
-			// TODO Check to make sure the item being broken is fully grown...
 			Ageable ageable = (Ageable) e.getBlock().getState().getBlockData();
 			e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(),
 					ci.getItem((ageable.getAge() >= ageable.getMaximumAge() ? new Random().nextInt(2) + 2 : 1)));
