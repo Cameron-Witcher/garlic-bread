@@ -56,7 +56,9 @@ public class CropListener implements Listener {
 				for (CustomItem ci : CustomItem.values()) {
 					if (!ci.getItem().isSimilar(hand))
 						continue;
+					e.setCancelled(true);
 					Crops.addCrop(e.getClickedBlock().getLocation().clone().add(0, 1, 0), ci);
+					hand.setAmount(hand.getAmount() - 1);
 				}
 		}
 	}
