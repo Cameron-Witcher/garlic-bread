@@ -13,6 +13,7 @@ public class Crop {
 	CustomItem ci;
 	ArmorStand stand;
 	Location loc;
+	int age = 0;
 
 	public Crop(Location loc, CustomItem ci) {
 		this.loc = loc;
@@ -29,7 +30,7 @@ public class Crop {
 		mm.setCustomModelData(ci.getModelData());
 		model.setItemMeta(mm);
 		stand.getEquipment().setHelmet(model);
-		stand.teleport(stand.getLocation().clone().add(0, 99.1, 0));
+		stand.teleport(stand.getLocation().clone().add(0, 98.1, 0));
 	}
 
 	public CustomItem getCustomItem() {
@@ -38,6 +39,26 @@ public class Crop {
 
 	public void kill() {
 		stand.remove();
+	}
+
+	public void ageUp() {
+		ageUp(1);
+	}
+
+	public void ageUp(int amount) {
+		age = age + amount;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public int getMaxAge() {
+		return 4;
+	}
+
+	public Location getLocation() {
+		return loc.clone();
 	}
 
 }
