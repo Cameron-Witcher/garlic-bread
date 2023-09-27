@@ -3,7 +3,6 @@ package com.gugbmc.garlic.utils.items;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -15,11 +14,11 @@ public class ItemIdentifier {
 		int i = 0;
 		for (Material mat : Material.values()) {
 			leg.put(new ItemStack(mat), (char) i);
-			i++;
+			i = i + 1;
 		}
 		for (CustomItem it : CustomItem.values()) {
 			leg.put(it.getItem(), ((char) i));
-			i++;
+			i = i + 1;
 		}
 	}
 
