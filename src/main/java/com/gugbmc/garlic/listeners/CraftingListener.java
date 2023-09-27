@@ -26,6 +26,8 @@ public class CraftingListener implements Listener {
 
 	@EventHandler
 	public void onCraftingTableUpdate(InventoryClickEvent e) {
+		Bukkit.broadcastMessage("Inv Click");
+		Bukkit.broadcastMessage("Type: " + e.getClickedInventory().getType());
 		if (e.getClickedInventory().getType().equals(InventoryType.CRAFTING)) {
 			CraftingInventory c = (CraftingInventory) e.getClickedInventory();
 			Map<Character, CustomItem> leg = new HashMap<>();
