@@ -36,8 +36,9 @@ public class CropListener implements Listener {
 			CustomItem ci = Crops.getCrop(e.getBlock().getLocation());
 			e.setCancelled(true);
 			e.getBlock().setType(Material.AIR);
-			e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(),
-					ci.getItem(new Random().nextInt(3) + 1));
+			// TODO Check to make sure the item being broken is fully grown...
+			for (int i = 0; i <= new Random().nextInt(3) + 2; i++)
+				e.getBlock().getWorld().dropItemNaturally(e.getBlock().getLocation(), ci.getItem());
 		}
 	}
 
