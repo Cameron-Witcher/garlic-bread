@@ -46,6 +46,7 @@ public class Crops {
 				crop.setAge(fc.getInt("crops." + locstr + ".age"));
 				crops.put(loc, crop);
 			}
+			fc.set("crops", null);
 		} catch (NullPointerException ex) {
 		}
 	}
