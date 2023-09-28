@@ -17,6 +17,7 @@ import org.bukkit.plugin.Plugin;
 
 import com.gugbmc.garlic.utils.crops.Crops;
 import com.gugbmc.garlic.utils.items.ItemIdentifier;
+import com.gugbmc.garlic.utils.recipes.RecipeUtils;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -30,6 +31,7 @@ public class Utils {
 		plugin = main;
 		Crops.loadCrops();
 		ItemIdentifier.init();
+		RecipeUtils.init();
 	}
 
 	public static void end() {
