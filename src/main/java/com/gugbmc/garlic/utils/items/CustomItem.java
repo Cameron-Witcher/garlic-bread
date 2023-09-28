@@ -8,7 +8,7 @@ import com.gugbmc.garlic.utils.Utils;
 
 public enum CustomItem {
 
-	GARLIC("Garlic", Material.CARROT, true, 99200001), GARLIC_BREAD("Garlic Bread", Material.BREAD, false, 1);
+	GARLIC("Garlic", Material.CARROT, true, 99200001), GARLIC_BREAD("Garlic Bread", Material.BREAD, false, 1), STOVE("Stove", Material.IRON_NUGGET, false, 99200501);
 
 	String name;
 	int cmd;
