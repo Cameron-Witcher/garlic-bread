@@ -35,8 +35,10 @@ public class CraftingListener implements Listener {
 			Bukkit.getScheduler().runTaskLater(Utils.getPlugin(), new Runnable() {
 				@Override
 				public void run() {
-					if(a.getItem(1).equals(new ItemStack(Material.FURNACE)) && a.getItem(2).equals(new ItemStack(Material.IRON_INGOT))) {
-						a.setItem(0, CustomItem.STOVE.getItem());
+
+					if (a.getItem(0).equals(new ItemStack(Material.FURNACE))
+							&& a.getItem(1).equals(new ItemStack(Material.IRON_INGOT))) {
+						a.setItem(2, CustomItem.STOVE.getItem());
 					}
 				}
 			}, 0);
