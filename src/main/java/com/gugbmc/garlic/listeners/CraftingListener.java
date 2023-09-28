@@ -11,8 +11,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import com.gugbmc.garlic.utils.Utils;
-import com.gugbmc.garlic.utils.items.CustomItem;
 import com.gugbmc.garlic.utils.items.ItemIdentifier;
+import com.gugbmc.garlic.utils.recipes.Recipe;
+import com.gugbmc.garlic.utils.recipes.RecipeUtils;
 
 public class CraftingListener implements Listener {
 
@@ -25,10 +26,8 @@ public class CraftingListener implements Listener {
 
 	@EventHandler
 	public void onCraftingTableUpdate(InventoryClickEvent e) {
-		Bukkit.broadcastMessage("Inv Click");
 		if (e.getClickedInventory() == null)
 			return;
-		Bukkit.broadcastMessage("Type: " + e.getClickedInventory().getType());
 		if (e.getClickedInventory().getType().equals(InventoryType.WORKBENCH)) {
 			CraftingInventory c = (CraftingInventory) e.getClickedInventory();
 			Bukkit.getScheduler().runTaskLater(Utils.getPlugin(), new Runnable() {
@@ -38,15 +37,11 @@ public class CraftingListener implements Listener {
 					for (int i = 1; i != 10; i++) {
 						r = r + ItemIdentifier.getId(c.getItem(i) == null ? new ItemStack(Material.AIR) : c.getItem(i));
 					}
-					ItemStack air = new ItemStack(Material.AIR);
-					String t = "" + ItemIdentifier.getId(air) + ItemIdentifier.getId(CustomItem.GARLIC.getItem())
-							+ ItemIdentifier.getId(air) + ItemIdentifier.getId(air)
-							+ ItemIdentifier.getId(new ItemStack(Material.BREAD)) + ItemIdentifier.getId(air)
-							+ ItemIdentifier.getId(air) + ItemIdentifier.getId(air) + ItemIdentifier.getId(air);
-					Bukkit.broadcastMessage("Recipe: " + r);
-					Bukkit.broadcastMessage("Test for: " + t);
-					if (r.equals(t)) {
-						c.setItem(0, CustomItem.GARLIC_BREAD.getItem());
+					for (Recipe rec : RecipeUtils.getRecipes().values()) {
+						if (rec.getRecipe().equals(r)) {
+							c.setItem(0, rec.getResult());
+							continue;
+						}
 					}
 
 				}
