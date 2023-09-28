@@ -54,7 +54,7 @@ public class CropListener implements Listener {
 			}
 			if (e.getClickedBlock().getType().equals(Material.FARMLAND))
 				for (CustomItem ci : CustomItem.values()) {
-					if (!ci.getItem().isSimilar(hand))
+					if (!ci.getItem().isSimilar(hand) || !ci.isCrop())
 						continue;
 					e.setCancelled(true);
 					Crops.addCrop(e.getClickedBlock().getLocation().clone().add(0, 1, 0), ci);

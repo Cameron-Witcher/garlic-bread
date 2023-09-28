@@ -8,16 +8,18 @@ import com.gugbmc.garlic.utils.Utils;
 
 public enum CustomItem {
 
-	GARLIC("Garlic", Material.CARROT, 99200001), GARLIC_BREAD("Garlic Bread", Material.BREAD, 1);
+	GARLIC("Garlic", Material.CARROT, true, 99200001), GARLIC_BREAD("Garlic Bread", Material.BREAD, false, 1);
 
 	String name;
 	int cmd;
 	Material mat;
+	boolean crop;
 
-	CustomItem(String name, Material mat, int cmd) {
+	CustomItem(String name, Material mat, boolean crop, int cmd) {
 		this.name = name;
 		this.mat = mat;
 		this.cmd = cmd;
+		this.crop = crop;
 	}
 
 	public ItemStack getItem() {
@@ -40,6 +42,10 @@ public enum CustomItem {
 
 	public Integer getModelData() {
 		return cmd;
+	}
+
+	public boolean isCrop() {
+		return crop;
 	}
 
 }
