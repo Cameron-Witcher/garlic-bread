@@ -14,9 +14,9 @@ public class RecipeUtils {
 
 	public static void init() {
 		Recipe rec = createRecipe("garlic_bread", CustomItem.GARLIC_BREAD.getItem());
-		rec.buildRecipe().addItem(null).addItem(CustomItem.GARLIC.getItem()).addItem(null).addItem(null)
-				.addItem(new ItemStack(Material.BREAD)).addItem(null).addItem(null).addItem(null).addItem(null);
-		rec.build();
+		rec.getBuilder().addItem(null).addItem(CustomItem.GARLIC.getItem()).addItem(null).addItem(null)
+				.addItem(new ItemStack(Material.BREAD)).addItem(null).addItem(null).addItem(null).addItem(null).build();
+
 	}
 
 	public static Recipe createRecipe(String name, ItemStack result) {

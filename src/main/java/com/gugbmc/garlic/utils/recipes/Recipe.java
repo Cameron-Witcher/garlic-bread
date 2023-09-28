@@ -1,5 +1,6 @@
 package com.gugbmc.garlic.utils.recipes;
 
+import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import com.gugbmc.garlic.utils.items.ItemIdentifier;
@@ -16,21 +17,23 @@ public class Recipe {
 		this.result = result;
 	}
 
-	public RecipeBuilder buildRecipe() {
+	public RecipeBuilder getBuilder() {
 		builder = new RecipeBuilder();
 		return builder;
-	}
-
-	public void build() {
-		recipe = builder.recipe;
 	}
 
 	class RecipeBuilder {
 		String recipe = "";
 
 		public RecipeBuilder addItem(ItemStack i) {
+			if (i == null)
+				i = new ItemStack(Material.AIR);
 			recipe = recipe + ItemIdentifier.getId(i);
 			return this;
+		}
+
+		public void build() {
+			Recipe.this.recipe = recipe;
 		}
 	}
 
